@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface PokemonService {
     List<Pokemon> findAll();
-
-
 }
