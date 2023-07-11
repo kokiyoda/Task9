@@ -9,6 +9,6 @@ CREATE TABLE pokemons (
 );
 
 INSERT INTO pokemons (pokedexNo, name, nickname) VALUES (1, "フシギダネ", "ふしぎ");
-INSERT INTO pokemons (pokedexNo, name) VALUES (4, "ヒトカゲ", "ドン");
+INSERT INTO pokemons (pokedexNo, name, nickname) VALUES (4, "ヒトカゲ", "ドン");
 INSERT INTO pokemons (pokedexNo, name, nickname) VALUES (7, "ゼニガメ", "かめ");
 INSERT INTO pokemons (pokedexNo,name) VALUES (16, "ポッポ");
