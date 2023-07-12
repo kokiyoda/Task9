@@ -1,6 +1,7 @@
 package com.koki.task9.service;
 
 import com.koki.task9.entity.Pokemon;
+import com.koki.task9.exception.ResourceNotFoundException;
 import com.koki.task9.mapper.PokemonMapper;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,8 @@ public class PokemonServiceImpl implements PokemonService {
         return pokemonMapper.findAll();
     }
 
-
+    @Override
+    public Pokemon findById(int id) {
+        return this.pokemonMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found for id:" + id));
+    }
 }
