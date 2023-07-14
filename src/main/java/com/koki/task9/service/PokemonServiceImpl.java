@@ -6,6 +6,7 @@ import com.koki.task9.mapper.PokemonMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PokemonServiceImpl implements PokemonService {
@@ -21,7 +22,7 @@ public class PokemonServiceImpl implements PokemonService {
     }
 
     @Override
-    public Pokemon findById(int id) {
-        return this.pokemonMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found for id:" + id));
+    public Optional<Pokemon> findById(int id) {
+        return Optional.ofNullable(pokemonMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found for id:" + id)));
     }
 }

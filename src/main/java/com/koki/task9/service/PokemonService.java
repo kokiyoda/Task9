@@ -2,12 +2,12 @@ package com.koki.task9.service;
 
 
 import com.koki.task9.entity.Pokemon;
-import com.koki.task9.exception.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PokemonService {
     List<Pokemon> findAll();
 
-    Pokemon findById(int id) throws ResourceNotFoundException;
+    Optional<Pokemon> findById(int id);
 }
