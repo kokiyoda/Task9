@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 
@@ -26,7 +25,7 @@ public class PokemonController {
     }
 
     @GetMapping("/pokemons/{id}")
-    public Optional<Pokemon> findPokemonById(@PathVariable("id") int id) {
-        return pokemonService.findById(id);
+    public Pokemon findPokemonById(@PathVariable("id") int id) throws Exception {
+        return pokemonService.findById(id).orElseThrow();
     }
 }
