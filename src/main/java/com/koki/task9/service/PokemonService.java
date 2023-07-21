@@ -10,4 +10,6 @@ public interface PokemonService {
     List<Pokemon> findAll();
 
     Optional<Pokemon> findById(int id);
+
+    public Pokemon createPokemon(int pokedexNo, String name, String nickname);
 }

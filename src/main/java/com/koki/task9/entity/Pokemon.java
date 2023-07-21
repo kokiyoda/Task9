@@ -19,4 +19,10 @@ public class Pokemon {
         this.name = name;
         this.nickname = nickname;
     }
+
+    public Pokemon(int pokedexNo, String name, String nickname) {
+        this.pokedexNo = pokedexNo;
+        this.name = name;
+        this.nickname = nickname;
+    }
 }

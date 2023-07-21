@@ -1,13 +1,17 @@
 package com.koki.task9.controller;
 
 import com.koki.task9.entity.Pokemon;
+import com.koki.task9.form.PokemonCreateForm;
 import com.koki.task9.response.PokemonResponse;
 import com.koki.task9.service.PokemonService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 
@@ -27,5 +31,15 @@ public class PokemonController {
     @GetMapping("/pokemons/{id}")
     public Pokemon findPokemonById(@PathVariable("id") int id) throws Exception {
         return pokemonService.findById(id).orElseThrow();
+    }
+
+    @PostMapping("/pokemons")
+    public ResponseEntity<Map<String, String>> createPokemon(@RequestBody @Valid PokemonCreateForm form, UriComponentsBuilder uriBuilder) {
+        Pokemon pokemon = pokemonService.createPokemon(form.getPokedexNo(), form.getName(), form.getNickname());
+        URI uri = uriBuilder
+                .path("/pokemons/" + pokemon.getId())
+                .build()
+                .toUri();
+        return ResponseEntity.created(uri).body(Map.of("massage", "pokemon successfully created"));
     }
 }
