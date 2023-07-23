@@ -35,7 +35,7 @@ public class PokemonController {
 
     @PostMapping("/pokemons")
     public ResponseEntity<Map<String, String>> createPokemon(@RequestBody @Valid PokemonCreateForm form, UriComponentsBuilder uriBuilder) {
-        Pokemon pokemon = pokemonService.createPokemon(form.getPokedexNo(), form.getName(), form.getNickname());
+        Pokemon pokemon = pokemonService.createPokemon(form.newPokemon());
         URI uri = uriBuilder
                 .path("/pokemons/{id}")
                 .buildAndExpand(pokemon.getId())

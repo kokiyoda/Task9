@@ -27,8 +27,8 @@ public class PokemonServiceImpl implements PokemonService {
     }
 
     @Override
-    public Pokemon createPokemon(int pokedexNo, String name, String nickname) {
-        Pokemon newPokemon = new Pokemon(pokedexNo, name, nickname);
+    public Pokemon createPokemon(Pokemon pokemon) {
+        Pokemon newPokemon = new Pokemon(pokemon.getPokedexNo(), pokemon.getName(), pokemon.getNickname());
         pokemonMapper.createPokemon(newPokemon);
         return newPokemon;
     }

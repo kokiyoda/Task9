@@ -11,5 +11,5 @@ public interface PokemonService {
 
     Optional<Pokemon> findById(int id);
 
-    public Pokemon createPokemon(int pokedexNo, String name, String nickname);
+    public Pokemon createPokemon(Pokemon pokemon);
 }

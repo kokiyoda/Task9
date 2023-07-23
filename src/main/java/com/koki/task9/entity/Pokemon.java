@@ -1,8 +1,10 @@
 package com.koki.task9.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Pokemon {
 
     private int id;
