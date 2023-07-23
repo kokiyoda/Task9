@@ -37,8 +37,8 @@ public class PokemonController {
     public ResponseEntity<Map<String, String>> createPokemon(@RequestBody @Valid PokemonCreateForm form, UriComponentsBuilder uriBuilder) {
         Pokemon pokemon = pokemonService.createPokemon(form.getPokedexNo(), form.getName(), form.getNickname());
         URI uri = uriBuilder
-                .path("/pokemons/" + pokemon.getId())
-                .build()
+                .path("/pokemons/{id}")
+                .buildAndExpand(pokemon.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(Map.of("massage", "pokemon successfully created"));
     }
