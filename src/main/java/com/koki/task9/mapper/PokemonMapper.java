@@ -1,6 +1,7 @@
 package com.koki.task9.mapper;
 
 import com.koki.task9.entity.Pokemon;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,4 +15,7 @@ public interface PokemonMapper {
 
     @Select("SELECT * FROM pokemons WHERE id = #{id}")
     Optional<Pokemon> findById(int id);
+
+    @Insert("INSERT INTO pokemons (pokedexNo, name, nickname) VALUES (#{pokedexNo}, #{name}, #{nickname})")
+    public void createPokemon(Pokemon pokemon);
 }

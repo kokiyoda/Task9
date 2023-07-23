@@ -25,4 +25,11 @@ public class PokemonServiceImpl implements PokemonService {
     public Optional<Pokemon> findById(int id) {
         return Optional.ofNullable(pokemonMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("not found for id:" + id)));
     }
+
+    @Override
+    public Pokemon createPokemon(Pokemon pokemon) {
+        Pokemon newPokemon = new Pokemon(pokemon.getPokedexNo(), pokemon.getName(), pokemon.getNickname());
+        pokemonMapper.createPokemon(newPokemon);
+        return newPokemon;
+    }
 }
